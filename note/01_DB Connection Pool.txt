@@ -12,3 +12,25 @@
 
  - Apache Commons DBCP
  - Hikari CP / 구글 hikaricp 검색 - 깃허브 리드미 - 자바 8버전 복붙
+ 
+ 
+# HikariCP dependency
+
+	<dependency> <!-- 0809 히카리cp  -->
+   <groupId>com.zaxxer</groupId>
+   <artifactId>HikariCP</artifactId>
+   <version>4.0.3</version>
+</dependency>
+
+# HikariCP root-context
+
+<bean id="config" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE" />
+		<property name="username" value="hr" />
+		<property name="password" value="1234" />
+	</bean>
+	
+	<bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
+		<constructor-arg ref="config"/> <!-- config를 참조하는 datasource가 된다 -->
+	</bean>

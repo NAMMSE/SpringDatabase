@@ -5,6 +5,16 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
+	<!-- 0809 -->
+	<bean id="config" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE" />
+		<property name="username" value="hr" />
+		<property name="password" value="1234" />
+	</bean>
 	
+	<bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
+		<constructor-arg ref="config"/> <!-- config를 참조하는 datasource가 된다 -->
+	</bean>
 		
 </beans>
