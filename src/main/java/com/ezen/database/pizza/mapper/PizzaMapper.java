@@ -13,7 +13,7 @@ public interface PizzaMapper {
 
 	public int add(Pizza pizza);
 	
-	public Pizza getPizza(int id);
+	public Pizza getPizza(int id);
 
 	public Integer update(Pizza pizza);
 }

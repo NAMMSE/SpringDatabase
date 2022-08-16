@@ -28,4 +28,66 @@
 		    <artifactId>mybatis-spring</artifactId>
 		    <version>2.0.7</version>
 		</dependency>
-				
+		
+# 어노테이션 방식
+
+	public interface EmployeeMapper {
+	
+	
+	@Select("select * from employees")//"select employee_id, first_name, last_name, job_id, salary, commission_pct, department_id from employees")
+	public List<Employee> getList();
+	
+	@Select("select * from employees where employee_id = #{id}")//"select employee_id, first_name, last_name, job_id, salary, commission_pct, department_id from employees")
+	public Employee findById(@Param("id") long id);
+	
+	@Select("select * from user where first_name = #{name}")
+	public Employee findByName(@Param("name") String name);
+	
+	@Select("select * from user where first_email = #{email}")
+	public Employee findByEmail(@Param("email") String email);
+	
+}
+
+
+
+# XML 방식
+	- mapper interface와 완전히 같은 패키지에 XML파일을 작성한다.
+	
+	<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 0810 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.database.pizza.mapper.PizzaMapper">
+   
+   <select  id="getAll" resultType="com.ezen.database.dto.Pizza">
+   		select * from pizza
+   </select>
+  
+  <insert id="add" >
+  		insert into pizza (id, name, price, calrories) values (pizza_id_seq.nextval, #{name}, #{price}, #{calrories})
+  </insert>
+  
+  <select id="getIdByName" resultType="int">
+  		select id from pizza where name = #{name}
+  </select>
+  
+  <select id="getPizza" resultType="com.ezen.database.dto.Pizza">
+  		select * from pizza where id = #{id}
+  </select>
+	
+  <update id="update">
+  	update pizza SET name = #{name},  price = #{price}, calrories = #{calrories} WHERE id = #{id}
+  </update> 
+</mapper>
+
+# XML 방식에서 부등호 사용하기
+
+	<select id="getListBetweenEdpt" resultType="com.ezen.database.dto.Employee">
+  		select * from employees where
+  		<![CDATA[department_id >= #{lower_dept} and department_id <= ${upper_dept}]]> <!-- 부등호를 사용할땐 CDATA 영역 안에 넣어줘야 한다 -->
+  		
+  </select>
+  
+  또는 &lt; , &gt; 를 활용
+   				

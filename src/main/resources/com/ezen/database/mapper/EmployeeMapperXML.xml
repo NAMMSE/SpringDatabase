@@ -10,4 +10,25 @@
   <select id="getListByDept" resultType="com.ezen.database.dto.Employee"> <!-- 이것만으로 mybatis가 알아서 해당 쿼리문 결과를 반환해준다  / resultType 적어줘야된다-->
   		select * from employees where department_id = #{department_id}
   </select>
+  
+  <!-- 0816 부등호 사용하는 상황일때 -->
+  <!-- 
+  <select id="getListBetweenEdpt" resultType="com.ezen.database.dto.Employee">
+  		select * from employees where
+  		department_id between #{lower_dept} and ${upper_dept}
+  </select>
+   -->
+   
+   <select id="getListBetweenDept" resultType="com.ezen.database.dto.Employee">
+  		select * from employees where
+  		<![CDATA[
+  					department_id >= #{lower_dept} and department_id <= ${upper_dept}
+  				]]> <!-- 부등호를 사용할땐 CDATA 영역 안에 넣어줘야 한다 
+  						아니면 department_id %gt; #{lower_dept} and department_id &lt; ${upper_dept} 이렇게도 사용할 수 있다
+  				-->
+  		order by department_id asc
+  		
+  </select>
+   
+  
 </mapper>

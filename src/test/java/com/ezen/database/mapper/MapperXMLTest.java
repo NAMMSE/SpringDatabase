@@ -18,24 +18,31 @@ public class MapperXMLTest {
 	EmployeeMapperXML mapper;
 	
 	@Autowired //어노테이션은 변수 하나당 하나씩 일일이 적어줘야 한다 
-	PizzaMapperXML pizzaMapper;
+	PizzaMapperXMLtest pizzaMapper;
 	
-	@Test
-	public void test() {
-		log.info(mapper.getList());
-	}
+//	@Test
+//	public void test() {
+//		log.info(mapper.getList());
+//	}
+//	
+//	@Test
+//	public void test2() {
+//		log.info(mapper.getListByDept(50));
+//	}
 	
-	@Test
-	public void test2() {
-		log.info(mapper.getListByDept(50));
-	}
 	
+//	@Test
+//	public void pizzaTest1() {
+//		
+//		log.info(pizzaMapper.select());
+//		//log.info(pizzaMapper.insertPizza(1, "supreme", 20000, 300));
+//		
+//	}
+	
+	// 0816 employeeXML 부등호 사용 테스트
 	@Test
-	public void pizzaTest1() {
-		
-		log.info(pizzaMapper.select());
-		//log.info(pizzaMapper.insertPizza(1, "supreme", 20000, 300));
-		
+	public void test3() {
+		log.info(mapper.getListBetweenDept(30, 80));
 	}
 
 }

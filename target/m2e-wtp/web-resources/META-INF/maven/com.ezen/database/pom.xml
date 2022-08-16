@@ -120,6 +120,20 @@
 		<artifactId>log4j-core</artifactId>
 		<version>${log4j2-version}</version>
 	</dependency>
+	<!-- 0816 log4jdbc 로그 안찍혀서 추가 -->
+	<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    	<artifactId>log4j-1.2-api</artifactId>
+    	<version>${log4j2-version}</version>
+	</dependency>
+	
+	<!-- 0816 lo4jdbc 디펜던시 -->
+	<dependency>
+    <groupId>org.bgee.log4jdbc-log4j2</groupId>
+    <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+    <version>1.16</version>
+</dependency>
+	
 		
 
 		<!-- @Inject -->

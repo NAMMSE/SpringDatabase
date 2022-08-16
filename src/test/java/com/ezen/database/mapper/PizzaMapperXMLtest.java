@@ -6,7 +6,7 @@ import org.apache.logging.log4j.message.Message;
 
 import com.ezen.database.dto.Pizza;
 
-public interface PizzaMapperXML {
+public interface PizzaMapperXMLtest {
 	
 	public List<Pizza> select();
 	
